@@ -1,0 +1,4 @@
+api-gateway/volume-data/
+inventory-service/mysql/
+microservices-frontend/node_modules
+order-service/mysql/

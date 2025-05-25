@@ -1,0 +1,16 @@
+version: '4'
+services:
+#  service name
+  mongodb:
+    image: mongo:7.0.5
+    container_name: mongodb
+#   mongo db will be running inside container on port
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: product-service
+#    docker container stores data under volume to prevent data loss when container stops
+    volumes:
+      - ./data:/data/db

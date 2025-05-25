@@ -1,0 +1,16 @@
+version: '4'
+services:
+  #  service name
+  mongodb:
+    image: mysql:8.3.0
+    container_name: mysql1
+    #   mysql will be running inside container on port
+    ports:
+      - "3316:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    #    docker container stores data under volume to prevent data loss when container stops
+    volumes:
+      - ./mysql:/var/lib/mysql
+    #    Map our init.sql during mysql intialisation
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql

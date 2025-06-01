@@ -9,11 +9,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 
 @Configuration
-@RequiredArgsConstructor
 public class ObservationConfig {
 
     //Enable observation inside Kafka Listener
-    private final ConcurrentKafkaListenerContainerFactory concurrentKafkaListenerContainerFactory;
+    private final ConcurrentKafkaListenerContainerFactory<?, ?> concurrentKafkaListenerContainerFactory;
+
+    public ObservationConfig(ConcurrentKafkaListenerContainerFactory<?, ?> concurrentKafkaListenerContainerFactory) {
+        this.concurrentKafkaListenerContainerFactory = concurrentKafkaListenerContainerFactory;
+    }
 
     @PostConstruct
     public void setObservationForKafkaTemplate(){

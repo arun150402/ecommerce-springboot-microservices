@@ -11,11 +11,14 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class NotificationService{
 
     private final JavaMailSender javaMailSender;
+
+    public NotificationService(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
     @KafkaListener(topics="order-placed")
     public void listen(OrderPlacedEvent orderPlacedEvent){
